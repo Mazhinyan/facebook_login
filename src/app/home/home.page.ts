@@ -22,7 +22,7 @@ export class HomePage {
 	}
 	isLoggedIn: boolean = false;
 	users: any;
-	data: string;
+	hashtag: string;
 	hashtags_list: any;
 	login() {
 		this.fb
@@ -31,12 +31,16 @@ export class HomePage {
 				if (res.status === 'connected') {
 					this.isLoggedIn = true;
 					this.getUserDetail(res.authResponse.userID);
-					alert('your user id is ' + res.authResponse.userID);
+					alert('Successful login'); //when is success
 				} else {
 					this.isLoggedIn = false;
+					alert('anything is wrong');
 				}
 			})
-			.catch((e) => console.log('Error logging into Facebook', e));
+			.catch((e) => {
+				console.log('Error logging into Facebook', e);
+				alert('anything is wrong');
+			});
 	}
 	logout() {
 		this.fb
@@ -46,7 +50,7 @@ export class HomePage {
 	}
 	getUserDetail(userid) {
 		this.fb
-			.api('/' + userid + '/?fields=id,email,name,picture,gender', [ 'public_profile' ])
+			.api('/' + userid + '/?fields=id,email,name,picture,gender', [ 'public_profile' ]) // see
 			.then((res) => {
 				this.users = res;
 			})
@@ -58,8 +62,8 @@ export class HomePage {
 	mySearch() {
 		let userid = this.users.id;
 		this.fb
-			.api('/ig_hashtag_search?user_id=' + userid + '&q={q}' + this.data, [ 'public_profile' ])
-			// {user-id}&q={q}
+			.api('/search?user_id=' + userid + '&q=%23' + this.hashtag, [ 'public_profile' ])
+			// {user-id}&q={hashtag}
 			.then((res) => {
 				this.hashtags_list = res;
 			})

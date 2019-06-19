@@ -77,13 +77,17 @@
 		"plugins": {
 			"cordova-plugin-facebook4": {
 				"APP_ID": "335590720414638",
-				"APP_NAME": "task"
+				"APP_NAME": "task",
+				"FACEBOOK_HYBRID_APP_EVENTS": "false",
+				"FACEBOOK_ANDROID_SDK_VERSION": "4.40.0"
 			},
 			"cordova-plugin-whitelist": {},
 			"cordova-plugin-statusbar": {},
 			"cordova-plugin-device": {},
 			"cordova-plugin-splashscreen": {},
-			"cordova-plugin-ionic-webview": {},
+			"cordova-plugin-ionic-webview": {
+				"ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+			},
 			"cordova-plugin-ionic-keyboard": {},
 			"cordova-instagram-plugin": {}
 		},

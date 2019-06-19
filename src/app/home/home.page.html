@@ -1,6 +1,6 @@
 <ion-header class="header_content">
    <div>
-     <input type="text" placeholder="search here ..." *ngIf="isLoggedIn" [(ngModel)]="data" (input)="mySearch()"/>
+     <input type="text" placeholder="search here ..." *ngIf="isLoggedIn" [(ngModel)]="hashtag" (input)="mySearch()"/>
      <p *ngIf="data">Search hashtag "#{{data}}"</p>
     </div>
 
