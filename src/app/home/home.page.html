@@ -1,0 +1,40 @@
+<ion-header class="header_content">
+   <div>
+     <input type="text" placeholder="search here ..." *ngIf="isLoggedIn" [(ngModel)]="data" (input)="mySearch()"/>
+     <p *ngIf="data">Search hashtag "#{{data}}"</p>
+    </div>
+
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="isLoggedIn; else facebookLogin">
+    <h2>Hi, {{users.name}}</h2>
+    <p>Your email is  {{users.email}}</p>
+    <p>
+      Gender: {{users.gender}}
+   
+    </p>
+    <p>
+      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />
+    </p>
+    <p>
+      <ion-button ion-button icon-right (click)="logout()">
+        Logout
+      </ion-button>
+    </p>
+
+    <ion-content>
+      <ion-item>
+        <ion-label position="fixed">Fixed Label</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </ion-content>
+   
+  </div>
+  <ng-template #facebookLogin>
+    <ion-button  (click)="login()">
+      Login with 
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-button>
+  </ng-template>
+</ion-content>
